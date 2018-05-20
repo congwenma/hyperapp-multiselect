@@ -1,5 +1,5 @@
-import { h } from 'hyperapp';
-import Description from './Description';
+import { h } from "hyperapp";
+import Description from "./Description";
 
 /**
  * first object in the store is 'state' (an object - {})
@@ -7,23 +7,44 @@ import Description from './Description';
  * here we destructure what is needed
  * 'num' from 'state' and 'add'/'sub' from 'actions'
  */
-export default ({ num }, { add, sub }) =>
-  <div class="counter">
-    <Description />
-    <section>
-      <button
-        class="sub"
-        onclick={sub}
-        disabled={num < 1}
-      >
-        -
-      </button>
-      <h1 class="count">{num}</h1>
-      <button
-        class="add"
-        onclick={add}
-      >
-        +
-      </button>
-    </section>
-  </div>;
+export default ({ current, elements, perWidth }, { next, prev }) => {
+  // debugger;
+  return (
+    <div class="counter">
+      <Description />
+      <section>
+        <div
+          id="carousel"
+          style={{
+            whiteSpace: "nowrap",
+            width: perWidth * 3 + "px",
+            overflowX: "hidden"
+          }}
+        >
+          <div
+            class="margin-left-transition"
+            style={{
+              marginLeft: -(perWidth * current) + "px"
+            }}
+          >
+            {/* <div class="inline-block">Do something 1</div>
+              <div class="inline-block">Do something 2</div>
+              <div class="inline-block">Do something 3</div>
+              <div class="inline-block">Do something 4</div>
+              <div class="inline-block">Do something 5</div>
+              <div class="inline-block">Do something 6</div>
+              <div class="inline-block">Do something 7</div>
+              <div class="inline-block">Do something 8</div>
+            */}
+            {elements}
+          </div>
+        </div>
+        <div>
+          <button onclick={prev}>Previous</button>
+          {current}
+          <button onclick={next}>Next</button>
+        </div>
+      </section>
+    </div>
+  );
+};

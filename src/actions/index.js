@@ -1,4 +1,12 @@
 export default {
-  add: (/* event (e) */) => ({ num }) => ({ num: num + 1 }),
-  sub: (/* event (e) */) => ({ num }) => ({ num: num - 1 }),
+  prev: _event => oldState => {
+    return Object.assign({}, oldState, {
+      current: Math.max(oldState.current - 1, 0)
+    });
+  },
+
+  next: _event => oldState =>
+    Object.assign({}, oldState, {
+      current: Math.min(oldState.current + 1, oldState.elements.length - 1)
+    })
 };
