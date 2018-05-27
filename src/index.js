@@ -5,12 +5,19 @@ import {
   actions as carouselActions
 } from "./components/carousel";
 
+import {
+  state as mdState,
+  actions as mdActions
+} from "./components/multi_dropdown";
+
 const state = {
-  carousel: carouselState
+  carousel: carouselState,
+  multiDropdown: mdState
 };
 
 const actions = {
-  carousel: carouselActions
+  carousel: carouselActions,
+  multiDropdown: mdActions
 };
 
 const myApp = app(state, actions, view, document.body);
