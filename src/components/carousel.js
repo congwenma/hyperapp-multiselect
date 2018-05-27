@@ -1,4 +1,29 @@
 import { app, h } from "hyperapp";
+// state
+const expand = n => [...Array(n).keys()];
+
+export const state = {
+  current: 0,
+  elements: expand(10).map(n => {
+    return <div class="inline-block">Do something {n}</div>;
+  }),
+  perWidth: 150
+};
+
+// actions
+export const actions = {
+  onPrev: _event => oldState => {
+    return Object.assign({}, oldState, {
+      current: Math.max(oldState.current - 1, 0)
+    });
+  },
+
+  onNext: _event => oldState => {
+    return Object.assign({}, oldState, {
+      current: Math.min(oldState.current + 1, oldState.elements.length - 1)
+    });
+  }
+};
 
 /**
  *

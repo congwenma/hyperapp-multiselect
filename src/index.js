@@ -1,7 +1,17 @@
 import { app } from "hyperapp";
-import actions from "./actions/index";
-import state from "./state";
-import view from "./components/Counter";
+import view from "./components/TestGround";
+import {
+  state as carouselState,
+  actions as carouselActions
+} from "./components/carousel";
+
+const state = {
+  carousel: carouselState
+};
+
+const actions = {
+  carousel: carouselActions
+};
 
 const myApp = app(state, actions, view, document.body);
 
