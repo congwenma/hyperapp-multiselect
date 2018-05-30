@@ -1,0 +1,119 @@
+@import "./bass.css";
+
+/** basscss extension */
+.p0_5 {
+  padding: 0.25rem;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.pointer-events-none {
+  pointer-events: none;
+}
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+/** decorations */
+.border-collapse {
+  border-collapse: collapse;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+.rounded-2 {
+  border-radius: 6px;
+}
+
+.rounded {
+  border-radius: 100%;
+}
+
+/** text */
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.font-size-jumbo {
+  font-size: 4em;
+}
+
+/** positions */
+.bottom {
+  bottom: 0;
+}
+.top {
+  top: 0;
+}
+.left {
+  left: 0;
+}
+
+/** dimensions */
+.u-height100pct {
+  height: 100%;
+}
+.u-width100pct {
+  width: 100%;
+}
+
+/** overwrites */
+.u-flex {
+  display: flex !important;
+}
+.u-width-auto {
+  width: auto !important; /* used for flex grow */
+}
+
+/** colors */
+.red {
+  color: #ff4d34;
+}
+.green {
+  color: #2ecc71;
+}
+
+.white {
+  color: white;
+}
+
+/** button */
+.btn-blue {
+  background: #19b5fe;
+}
+.btn-blue:hover {
+  background: #3498db;
+}
+
+.btn-outline-0 {
+  outline: 0;
+}
+
+/**
+  * Specific UIs
+  */
+
+.WhiteNav {
+  border: 1px solid white;
+  height: 0;
+}
+.WhiteNav.active {
+  background: white;
+}
+
+/** transitions */
+.transition-background-0_3 {
+  transition: background 0.3s ease;
+}

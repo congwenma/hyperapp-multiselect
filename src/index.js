@@ -5,23 +5,20 @@ import {
   actions as carouselActions
 } from "./components/carousel";
 
-import {
-  state as mdState,
-  actions as mdActions
-} from "./components/multi_dropdown";
+import multiSelect from "./components/multi_select";
 
 const state = {
   carousel: carouselState,
-  multiDropdown: mdState
+  multiSelect: multiSelect.initialState
 };
 
 const actions = {
   carousel: carouselActions,
-  multiDropdown: mdActions
+  multiSelect: multiSelect.actions
 };
 
 const myApp = app(state, actions, view, document.body);
-
+window.myApp;
 /**
  * Hyperapp wires your actions so the view is re-rendered every time the state
  * changes as a result of calling any action. This object is useful because it
