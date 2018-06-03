@@ -94,10 +94,11 @@ const OptionRow = ({ checked, onclick, option }) =>
         "label",
         {
           style: {
-            display: "block",
+            display: "flex",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
-            overflowX: "hidden"
+            overflowX: "hidden",
+            alignItems: "center"
           }
         },
         [
@@ -136,17 +137,27 @@ const handleFocusFilterInput = event => {
   });
 };
 
-const SOME_CHECKED_MARK = h("div", {
-  style: {
-    position: "absolute",
-    top: "9px",
-    left: "4px",
-    height: "4px",
-    backgroundColor: "#19B5FE",
-    fontWeight: "bolder",
-    width: "10px"
-  }
-});
+const SOME_CHECKED_MARK = h(
+  "div",
+  {
+    style: {
+      position: "absolute",
+      height: "100%",
+      alignItems: "center",
+      top: 0,
+      display: "flex",
+      left: "3px"
+    }
+  },
+  h("div", {
+    style: {
+      height: "4px",
+      backgroundColor: "#19B5FE",
+      width: "10px",
+      borderRadius: "3px"
+    }
+  })
+);
 
 const MultiSelectControl = ({
   isFilterable,
