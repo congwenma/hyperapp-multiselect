@@ -21,8 +21,8 @@ module.exports = env => {
   return {
     entry: [
       // "./src/index.js",
-      // "./src/demo.js", // for demo
-      "./src/components/multi_select", // for dist
+      "./src/demo.js", // for demo
+      // "./src/components/multi_select", // for dist
 
       "./styles/app.css"
     ],

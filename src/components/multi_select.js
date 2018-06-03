@@ -75,7 +75,10 @@ const MultiSelect = ({
             "span",
             {
               class: "MultiSelect-arrowIcon",
-              style: { position: "absolute", right: 0 }
+              style: {
+                position: "absolute",
+                right: 0
+              }
             },
             [
               dropdownIcon ||
