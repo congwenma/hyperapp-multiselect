@@ -1,5 +1,5 @@
 import { app } from "hyperapp";
-import view from "./components/TestGround";
+import view from "./TestGround";
 import {
   state as carouselState,
   actions as carouselActions

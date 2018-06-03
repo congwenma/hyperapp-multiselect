@@ -1,126 +1,159 @@
-import { app, h } from "hyperapp";
-
-const expand = n => [...Array(n).keys()];
-
-// state
-export const state = {
-  selected: [],
-  allOptions: [],
-  isOpen: false
-};
-
-// actions
-export const actions = {
-  updateOptions: allOptions => oldState => {
-    return Object.assign({}, oldState, {
-      allOptions,
-      selected: []
-    });
-  },
-  onSelect: option => oldState => {
-    if (oldState.selected.includes(option)) {
-      const newSelected = oldState.selected.filter(opt => opt !== option);
-      return Object.assign({}, oldState, {
-        selected: newSelected
-      });
-    }
-    return Object.assign({}, oldState, {
-      selected: [option, ...oldState.selected]
-    });
-  },
-  onOpen: _event => oldState => {
-    return Object.assign({}, oldState, { isOpen: true });
-  },
-  onClose: _event => oldState => {
-    return Object.assign({}, oldState, { isOpen: false });
-  }
-};
-
-const OptionRow = ({ checked, onclick, option }) => (
-  <li class="MultiSelect-option">
-    <label style={{ display: "block" }}>
-      {/* TODO: make this render checkbox or a custom element */}
-      <input type="checkbox" checked={checked} onclick={onclick} />
-      {option}
-    </label>
-  </li>
-);
+import { h } from "hyperapp";
+import multi_select_helper from "./multi_select/multi_select_helper";
+const {
+  ZERO_STATE_FILTERED_MESSAGE,
+  ZeroStateTemplate,
+  AllOptionRows,
+  actions,
+  initialState,
+  handleFocusFilterInput,
+  MultiSelectControl
+} = multi_select_helper;
 
 const MultiSelect = ({
-  state: { isOpen, allOptions, selected },
-  actions: { onSelect, onOpen, onClose, updateOptions },
-  dropdownIcon,
-  dropdownCheckbox, // TODO: implement
-  style
-}) => {
-  return (
-    <div
-      class="MultiSelect"
-      style={Object.assign({ position: "relative" }, style)}
-      oncreate={element => {
-        updateOptions(expand(10));
-      }}
-    >
-      <div
-        class="MultiSelect-input"
-        style={{ border: "1px solid black", display: "flex" }}
-        onclick={isOpen ? onClose : onOpen}
-      >
-        <span style={{ marginRight: "auto" }}>
-          {selected.length
-            ? `Selected ${selected.length} items`
-            : "Pick one..."}
-        </span>
-        <span>{dropdownIcon || "v"}</span>
-      </div>
+  state: { isOpen, allOptions, cachedOptions, selected },
+  actions: { onSelect, onSelectAll, onOpen, onClose, onUpdateFilterText },
 
-      {isOpen && (
-        <div
-          class="MultiSelect-overlay"
-          style={{
+  // components
+  dropdownIcon,
+  filterIcon,
+  _dropdownCheckbox, // TODO: implement
+
+  // styles
+  style: topLevelStyle = {},
+  class: topLevelClass = "",
+  inputClass = "",
+  listStyle = {},
+
+  // strings
+  objectName = "Items",
+
+  // booleans
+  isFilterable = false,
+  canSelectAll = false
+}) => {
+  const isShowingControl = isFilterable || canSelectAll;
+  const topLevelClassMashed = `MultiSelect ${
+    isOpen ? "is-open" : ""
+  } ${topLevelClass}`;
+
+  return h(
+    "div",
+    {
+      class: topLevelClassMashed,
+      style: Object.assign(
+        {
+          border: "1px solid",
+          position: "relative",
+          paddingBottom: "2px"
+        },
+        topLevelStyle,
+        isOpen ? { borderBottomStyle: "dashed" } : {}
+      )
+    },
+    [
+      h(
+        "div",
+        {
+          class: `MultiSelect-input ${inputClass}`,
+          style: {
+            display: "flex",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis"
+          },
+          onclick: isOpen ? onClose : onOpen
+        },
+        [
+          h("span", { style: { marginRight: "auto" } }, [
+            selected.length
+              ? `Picked ${selected.length} ${objectName}`
+              : `Pick ${objectName}...`
+          ]),
+          h(
+            "span",
+            {
+              class: "MultiSelect-arrowIcon",
+              style: { position: "absolute", right: 0 }
+            },
+            [dropdownIcon || "v"]
+          )
+        ]
+      ),
+      isOpen &&
+        h("div", {
+          class: "MultiSelect-overlay",
+          style: {
             top: "0",
             left: "0",
             width: "100%",
             height: "100%",
-            position: "fixed"
-          }}
-          onclick={onClose}
-        />
-      )}
+            position: "fixed",
+            zIndex: 1 // need to block all other multi selects from clickable.
+          },
+          onclick: onClose
+        }),
+      isOpen &&
+        h(
+          "div",
+          {
+            // TODO: rename this class, to MultiSelect-list-wrapper.
+            class: "MultiSelect-list-wrapper",
+            style: Object.assign(
+              {
+                marginTop: "0",
+                paddingLeft: 0,
+                position: "absolute",
+                width: "100%",
+                zIndex: 2,
+                background: "rgba(255, 255, 255, 1)",
+                border: "1px solid black",
+                borderTop: "0px"
+              },
+              listStyle
+            )
+          },
+          [
+            isShowingControl &&
+              h(MultiSelectControl, {
+                isFilterable,
+                isOpen,
+                onUpdateFilterText,
+                filterIcon,
+                cachedOptions,
+                selected,
+                canSelectAll,
+                onSelectAll
+              }),
+            h(
+              "ul",
+              {
+                class: "MultiSelect-list",
+                style: {
+                  position: "relative",
+                  overflowY: "scroll",
+                  overflowX: "hidden",
+                  maxHeight: "200px",
+                  minHeight: "100px",
+                  // reset list
+                  padding: 0,
+                  margin: 0,
+                  listStyle: "none"
+                },
+                onclick: isFilterable && handleFocusFilterInput
+              },
 
-      {isOpen && (
-        <ul
-          class="MultiSelect-list"
-          style={{
-            marginTop: "0",
-            listStyle: "none",
-            paddingLeft: 0,
-            position: "absolute",
-            overflowY: "scroll",
-            width: "100%",
-            zIndex: 1,
-            maxHeight: "600px",
-            background: "rgba(255, 255, 255, 1)",
-            border: "1px solid black",
-            borderTop: "0px"
-          }}
-        >
-          {allOptions.map(option => (
-            <OptionRow
-              option={option}
-              checked={selected.includes(option)}
-              onclick={e => {
-                e.preventDefault();
-                onSelect(option);
-              }}
-            />
-          ))}
-        </ul>
-      )}
-    </div>
+              allOptions.length
+                ? h(AllOptionRows, { allOptions, selected, onSelect })
+                : cachedOptions.length
+                  ? ZERO_STATE_FILTERED_MESSAGE
+                  : ZeroStateTemplate(`There are no ${objectName}`)
+            )
+          ]
+        )
+    ]
   );
 };
 
-MultiSelect.initialState = state;
+MultiSelect.initialState = initialState;
 MultiSelect.actions = actions;
 export default MultiSelect;
