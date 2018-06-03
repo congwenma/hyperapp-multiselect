@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env production",
-    "wipe": "rm -rf .git && git init && git add . && git commit -m 'initial commit'",
+    "docs": "webpack --env production --config webpack.config.doc.js",
+    "wipe":
+      "rm -rf .git && git init && git add . && git commit -m 'initial commit'",
     "deploy": "npm run build && ./scripts/gh-pages.sh",
     "test": "jest --coverage --no-cache"
   },
