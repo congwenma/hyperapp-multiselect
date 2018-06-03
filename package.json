@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-multiselect",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "Minimal multiselect with search capabilities",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "deploy": "npm run build && ./scripts/gh-pages.sh",
     "test": "jest --coverage --no-cache"
   },
-  "author": "Congwen Ma",
+  "author": "congwenma",
   "license": "MIT",
   "dependencies": {
     "hyperapp": "^1.2.5"
