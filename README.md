@@ -2,6 +2,8 @@
 
 A Multiselect built with [Hyperapp](https://github.com/hyperapp/hyperapp) framework.
 
+[Demo](https://congwenma.github.io/hyperapp-multiselect/)
+
 # Integration
 
 ```js
