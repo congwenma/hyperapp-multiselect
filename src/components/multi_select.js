@@ -43,12 +43,14 @@ const MultiSelect = ({
       class: topLevelClassMashed,
       style: Object.assign(
         {
-          border: "1px solid",
+          border: "1px solid black",
           position: "relative",
           paddingBottom: "2px"
         },
         topLevelStyle,
-        isOpen ? { borderBottomStyle: "dashed" } : {}
+        isOpen
+          ? { borderBottomStyle: "dashed" }
+          : { borderBottomStyle: "solid" }
       )
     },
     [
@@ -66,7 +68,7 @@ const MultiSelect = ({
         [
           h("span", { style: { marginRight: "auto" } }, [
             selected.length
-              ? `Picked ${selected.length} ${objectName}`
+              ? `Selected ${selected.length} ${objectName}`
               : `Pick ${objectName}...`
           ]),
           h(
@@ -75,7 +77,18 @@ const MultiSelect = ({
               class: "MultiSelect-arrowIcon",
               style: { position: "absolute", right: 0 }
             },
-            [dropdownIcon || "v"]
+            [
+              dropdownIcon ||
+                h("span", {
+                  oncreate: elem => (elem.innerHTML = "&forall;"),
+                  style: {
+                    right: "5px",
+                    position: "absolute",
+                    transition: "transform .4s ease",
+                    transform: isOpen ? "rotate(180deg)" : ""
+                  }
+                })
+            ]
           )
         ]
       ),

@@ -139,7 +139,7 @@ const handleFocusFilterInput = event => {
 const SOME_CHECKED_MARK = h("div", {
   style: {
     position: "absolute",
-    top: "8px",
+    top: "9px",
     left: "4px",
     height: "4px",
     backgroundColor: "#19B5FE",
@@ -215,7 +215,7 @@ const MultiSelectControl = ({
           },
           [
             h(OptionRow, {
-              option: "Select All",
+              option: "Select all",
               checked: isEverythingSelected,
               onclick: e => {
                 e.preventDefault();
