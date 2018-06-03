@@ -4,6 +4,10 @@ A Multiselect built with [Hyperapp](https://github.com/hyperapp/hyperapp) framew
 
 [Demo](https://congwenma.github.io/hyperapp-multiselect/)
 
+# Install
+
+> npm i hyperapp-multiselect
+
 # Integration
 
 ```js
