@@ -11,7 +11,7 @@ const {
 } = multi_select_helper;
 
 const MultiSelect = ({
-  state: { isOpen, allOptions, cachedOptions, selected },
+  state: { isOpen, allOptions, cachedOptions, selected, filterText },
   actions: { onSelect, onSelectAll, onOpen, onClose, onUpdateFilterText },
 
   // components
@@ -159,7 +159,12 @@ const MultiSelect = ({
               },
 
               allOptions.length
-                ? h(AllOptionRows, { allOptions, selected, onSelect })
+                ? h(AllOptionRows, {
+                    allOptions,
+                    selected,
+                    onSelect,
+                    filterText
+                  })
                 : cachedOptions.length
                   ? ZERO_STATE_FILTERED_MESSAGE
                   : ZeroStateTemplate(`There are no ${objectName}`)

@@ -1,4 +1,5 @@
 import { h } from "hyperapp";
+import MarkTerms from "../MarkTerms";
 
 // state
 const initialState = {
@@ -80,7 +81,7 @@ const ZeroStateTemplate = text =>
   );
 const ZERO_STATE_FILTERED_MESSAGE = ZeroStateTemplate("No results found");
 
-const OptionRow = ({ checked, onclick, option }) =>
+const OptionRow = ({ checked, onclick, option, filterText }) =>
   h(
     "li",
     {
@@ -103,13 +104,14 @@ const OptionRow = ({ checked, onclick, option }) =>
         },
         [
           h("input", { type: "checkbox", checked: checked, onclick: onclick }),
-          option
+          // label mark terms
+          h(MarkTerms, { words: option, terms: filterText })
         ]
       )
     ]
   );
 
-const AllOptionRows = ({ allOptions, selected, onSelect }) => {
+const AllOptionRows = ({ allOptions, selected, onSelect, filterText }) => {
   return [
     h("div", { style: { height: "5px" } }), // padding top of list
 
@@ -120,7 +122,8 @@ const AllOptionRows = ({ allOptions, selected, onSelect }) => {
         onclick: e => {
           e.preventDefault();
           onSelect(option);
-        }
+        },
+        filterText
       });
     })
   ];
