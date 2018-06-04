@@ -30,9 +30,6 @@ const view = (state, actions) => {
       <MultiSelect
         state={multiSelectState}
         actions={multiSelectActions}
-        objectName={"states"}
-        inputClass={"states-input"}
-        listStyle={{ marginTop: "4px" }}
         isFilterable
         canSelectAll
         dropdownIcon={CustomDropdownArrowIcon}

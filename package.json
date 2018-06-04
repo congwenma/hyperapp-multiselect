@@ -1,14 +1,15 @@
 {
   "name": "hyperapp-multiselect",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Minimal multiselect with search capabilities",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env production",
-    "done": "npm run docs && npm run dist && npm run build",
+    "done": "npm run docs && npm run build",
     "docs": "webpack --env production --config webpack.config.docs.js",
-    "dist": "webpack --env production --config webpack.config.dist.js",
+    "NOTE: not used dist":
+      "webpack --env production --config webpack.config.dist.js",
     "wipe":
       "rm -rf .git && git init && git add . && git commit -m 'initial commit'",
     "deploy": "npm run build && ./scripts/gh-pages.sh",

@@ -14,21 +14,23 @@ const plugins = [
 
 module.exports = env => {
   if (env === "production") {
-    plugins.push(new UglifyJsPlugin());
-    plugins.push(new MinifyPlugin());
+    // plugins.push(new MinifyPlugin());
+    // plugins.push(new UglifyJsPlugin());
   }
 
   return {
     entry: [
       // "./src/index.js",
-      "./src/demo.js", // for demo
-      // "./src/components/multi_select", // for dist
+      // "./src/demo.js", // for demo
+      "./src/components/multi_select" // for dist
 
-      "./styles/app.css"
+      // "./styles/app.css"
     ],
     output: {
       filename: "bundle.js",
-      path: path.resolve(__dirname, "./dist")
+      path: path.resolve(__dirname, "./dist"),
+      library: "[name]",
+      libraryTarget: "umd"
     },
     module: {
       rules: [
@@ -44,6 +46,9 @@ module.exports = env => {
           })
         }
       ]
+    },
+    externals: {
+      hyperapp: true
     },
     plugins,
     devServer: {

@@ -1,1 +1,538 @@
-!function(a){function b(d){if(c[d])return c[d].exports;var e=c[d]={i:d,l:!1,exports:{}};return a[d].call(e.exports,e,e.exports,b),e.l=!0,e.exports}var c={};b.m=a,b.c=c,b.d=function(a,c,d){b.o(a,c)||Object.defineProperty(a,c,{configurable:!1,enumerable:!0,get:d})},b.n=function(a){var c=a&&a.__esModule?function(){return a.default}:function(){return a};return b.d(c,"a",c),c},b.o=function(a,b){return Object.prototype.hasOwnProperty.call(a,b)},b.p="",b(b.s=1)}([function(a,b){"use strict";Object.defineProperty(b,"__esModule",{value:!0}),b.h=function(a,b){for(var c=[],d=[],f=arguments.length;2<f--;)c.push(arguments[f]);for(;c.length;){var g=c.pop();if(g&&g.pop)for(f=g.length;f--;)c.push(g[f]);else null!=g&&!0!==g&&!1!==g&&d.push(g)}return"function"==typeof a?a(b||{},d):{nodeName:a,attributes:b||{},children:d,key:b&&b.key}},b.app=function(j,e,k,n){function q(a){return"function"==typeof a?q(a(s,u)):null==a?"":a}function l(){m=!m;var b=q(k);for(n&&!m&&(i=function b(e,k,m,l,n){if(l===m);else if(null==m||m.nodeName!==l.nodeName){var i=function b(c,d){var e="string"==typeof c||"number"==typeof c?document.createTextNode(c):(d=d||"svg"===c.nodeName)?document.createElementNS("http://www.w3.org/2000/svg",c.nodeName):document.createElement(c.nodeName),f=c.attributes;if(f){f.oncreate&&a.push(function(){f.oncreate(e)});for(var g=0;g<c.children.length;g++)e.appendChild(b(c.children[g]=q(c.children[g]),d));for(var h in f)v(e,h,f[h],null,d)}return e}(l,n);e.insertBefore(i,k),null!=m&&w(e,k,m),k=i}else if(null==m.nodeName)k.nodeValue=l;else{!function(b,d,e,f){for(var g in h(d,e))e[g]!==("value"===g||"checked"===g?b[g]:d[g])&&v(b,g,e[g],d[g],f);var j=c?e.oncreate:e.onupdate;j&&a.push(function(){j(b,d)})}(k,m.attributes,l.attributes,n=n||"svg"===l.nodeName);for(var o={},p={},r=[],d=m.children,f=l.children,s=0;s<d.length;s++){r[s]=k.childNodes[s];var u=t(d[s]);null!=u&&(o[u]=[r[s],d[s]])}for(var s=0,g=0;g<f.length;){var u=t(d[s]),y=t(f[g]=q(f[g]));if(p[u])s++;else if(null==y||c)null==u&&(b(k,r[s],d[s],f[g],n),g++),s++;else{var j=o[y]||[];u===y?(b(k,j[0],j[1],f[g],n),s++):j[0]?b(k,k.insertBefore(j[0],r[s]),j[1],f[g],n):b(k,r[s],null,f[g],n),p[y]=f[g],g++}}for(;s<d.length;)null==t(d[s])&&w(k,r[s],d[s]),s++;for(var s in o)p[s]||w(k,o[s][0],o[s][1])}return k}(n,i,r,r=b)),c=!1;a.length;)a.pop()()}function f(){m||(m=!0,setTimeout(l))}function h(a,b){var c={};for(var d in a)c[d]=a[d];for(var d in b)c[d]=b[d];return c}function b(a,c,d){var e={};return a.length?(e[a[0]]=1<a.length?b(a.slice(1),c,d[a[0]]):c,h(d,e)):c}function p(a,b){for(var c=0;c<a.length;)b=b[a[c++]];return b}function t(a){return a?a.key:null}function g(a){return a.currentTarget.events[a.type](a)}function v(a,b,c,d,e){if("key"===b);else if("style"===b)for(var f in h(d,c)){var i=null==c||null==c[f]?"":c[f];"-"===f[0]?a[b].setProperty(f,i):a[b][f]=i}else"o"===b[0]&&"n"===b[1]?(b=b.slice(2),a.events?d||(d=a.events[b]):a.events={},a.events[b]=c,c?d||a.addEventListener(b,g):a.removeEventListener(b,g)):b in a&&"list"!==b&&!e?a[b]=null==c?"":c:null!=c&&!1!==c&&a.setAttribute(b,c),null!=c&&!1!==c||a.removeAttribute(b)}function w(a,b,c){function d(){a.removeChild(function a(b,c){var d=c.attributes;if(d){for(var e=0;e<c.children.length;e++)a(b.childNodes[e],c.children[e]);d.ondestroy&&d.ondestroy(b)}return b}(b,c))}var e=c.attributes&&c.attributes.onremove;e?e(b,d):d()}var m,x=[].map,i=n&&n.children[0]||null,r=i&&function a(b){return{nodeName:b.nodeName.toLowerCase(),attributes:{},children:x.call(b.childNodes,function(b){return 3===b.nodeType?b.nodeValue:a(b)})}}(i),a=[],c=!0,s=h(j),u=function a(c,d,g){for(var e in g)"function"==typeof g[e]?function(a,j){g[a]=function(a){var e=j(a);return"function"==typeof e&&(e=e(p(c,s),g)),e&&e!==(d=p(c,s))&&!e.then&&f(s=b(c,h(d,e),s)),e}}(e,g[e]):a(c.concat(e),d[e]=h(d[e]),g[e]=h(g[e]));return g}([],s,h(e));return f(),u}},function(a,b,c){c(2),a.exports=c(3)},function(i,e,k){"use strict";function q(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}return Array.from(a)}Object.defineProperty(e,"__esModule",{value:!0});var z=k(0),l=function(a){return Object(z.h)("div",{style:{position:"absolute",height:"100%",width:"100%"}},Object(z.h)("div",{style:{height:"100%",alignItems:"center",justifyContent:"center",display:"flex"}},a))},n=l("No results found"),w=function(a){var b=a.checked,c=a.onclick,d=a.option;return Object(z.h)("li",{class:"MultiSelect-option",style:{listStyle:"none"}},[Object(z.h)("label",{style:{display:"flex",whiteSpace:"nowrap",textOverflow:"ellipsis",overflowX:"hidden",alignItems:"center"}},[Object(z.h)("input",{type:"checkbox",checked:b,onclick:c}),d])])},c=Object(z.h)("div",{style:{position:"absolute",height:"100%",alignItems:"center",top:0,display:"flex",left:"3px"}},Object(z.h)("div",{style:{height:"4px",backgroundColor:"#19B5FE",width:"10px",borderRadius:"3px"}})),o={ZERO_STATE_FILTERED_MESSAGE:n,ZeroStateTemplate:l,AllOptionRows:function(a){var b=a.allOptions,c=a.selected,d=a.onSelect;return[Object(z.h)("div",{style:{height:"5px"}})].concat(q(b.map(function(a){return Object(z.h)(w,{option:a,checked:c.includes(a),onclick:function(b){b.preventDefault(),d(a)}})})))},initialState:{selected:[],allOptions:[],cachedOptions:[],isOpen:!1,filterText:""},actions:{updateOptions:function(a){return function(b){return Object.assign({},b,{allOptions:a,cachedOptions:a,selected:[]})}},onSelect:function(a){return function(b){if(b.selected.includes(a)){var c=b.selected.filter(function(b){return b!==a});return Object.assign({},b,{selected:c})}return Object.assign({},b,{selected:[a].concat(q(b.selected))})}},onSelectAll:function(){return function(a){var b=a.selected,c=a.cachedOptions,d=c.length===b.length;return Object.assign({},a,{selected:d?[]:c})}},onOpen:function(){return function(a){return Object.assign({},a,{isOpen:!0})}},onClose:function(){return function(a){return Object.assign({},a,{isOpen:!1})}},onUpdateFilterText:function(a){return function(b){var c=a.toLowerCase(),d=b.cachedOptions;return Object.assign({},b,{allOptions:d.filter(function(a){return""===c||a.toLowerCase().includes(c)}),filterText:c})}}},handleFocusFilterInput:function(a){setTimeout(function(){for(var b=a.target;!b.classList.contains("MultiSelect");)b=b.parentElement;b.querySelector(".MultiSelect-filterInput").focus()})},MultiSelectControl:function(b){var e=b.isFilterable,f=b.isOpen,g=b.onUpdateFilterText,h=b.filterIcon,i=b.cachedOptions,j=b.selected,a=b.canSelectAll,k=b.onSelectAll,d=j.length===i.length;return Object(z.h)("div",{class:"MultiSelect-filterCheckallControl",style:{padding:"2px 0",background:"#eefaff",borderBottom:"1px dashed #19B5FE"}},[e&&Object(z.h)("div",{style:{display:"flex",background:"#eefaff",padding:"4px 6px",fontWeight:"800"}},[f&&Object(z.h)("span",{oncreate:function(a){a.nextElementSibling.focus()}}),Object(z.h)("input",{onkeyup:function(a){return g(a.target.value)},class:"MultiSelect-filterInput",placeholder:"Search...",style:{outlineWidth:"0px",width:"100%",fontSize:"16px",border:"2px solid #19B5FE",boxSizing:"border-box"}}),h]),a&&Object(z.h)("div",{style:{position:"relative",background:"#eefaff"}},[Object(z.h)(w,{option:"Select all",checked:d,onclick:function(a){a.preventDefault(),k()}}),!!j.length&&!d&&c])])}},D=o.ZERO_STATE_FILTERED_MESSAGE,d=o.ZeroStateTemplate,p=o.AllOptionRows,f=o.actions,G=o.handleFocusFilterInput,b=o.MultiSelectControl,h=function(f){var e=f.state,l=e.isOpen,q=e.allOptions,t=e.cachedOptions,v=e.selected,H=f.actions,a=H.onSelect,J=H.onSelectAll,K=H.onOpen,u=H.onClose,N=H.onUpdateFilterText,P=f.dropdownIcon,O=f.filterIcon,Q=(f._dropdownCheckbox,f.style),R=void 0===Q?{}:Q,m=f.class,j=void 0===m?"":m,x=f.inputClass,k=void 0===x?"":x,M=f.listStyle,A=void 0===M?{}:M,w=f.objectName,S=void 0===w?"Items":w,L=f.isFilterable,C=void 0!==L&&L,T=f.canSelectAll,F=void 0!==T&&T,U="MultiSelect "+(l?"is-open":"")+" "+j;return Object(z.h)("div",{class:U,style:Object.assign({border:"1px solid black",position:"relative",paddingBottom:"2px"},R,l?{borderBottomStyle:"dashed"}:{borderBottomStyle:"solid"})},[Object(z.h)("div",{class:"MultiSelect-input "+k,style:{display:"flex",whiteSpace:"nowrap",textOverflow:"ellipsis"},onclick:l?u:K},[Object(z.h)("span",{style:{marginRight:"auto"}},[v.length?"Selected "+v.length+" "+S:"Pick "+S+"..."]),Object(z.h)("span",{class:"MultiSelect-arrowIcon",style:{position:"absolute",right:0}},[P||Object(z.h)("span",{oncreate:function(a){return a.innerHTML="&forall;"},style:{right:"5px",position:"absolute",transition:"transform .4s ease",transform:l?"rotate(180deg)":""}})])]),l&&Object(z.h)("div",{class:"MultiSelect-overlay",style:{top:"0",left:"0",width:"100%",height:"100%",position:"fixed",zIndex:1},onclick:u}),l&&Object(z.h)("div",{class:"MultiSelect-list-wrapper",style:Object.assign({marginTop:"0",paddingLeft:0,position:"absolute",width:"100%",zIndex:2,background:"rgba(255, 255, 255, 1)",border:"1px solid black",borderTop:"0px"},A)},[(C||F)&&Object(z.h)(b,{isFilterable:C,isOpen:l,onUpdateFilterText:N,filterIcon:O,cachedOptions:t,selected:v,canSelectAll:F,onSelectAll:J}),Object(z.h)("ul",{class:"MultiSelect-list",style:{position:"relative",overflowY:"scroll",overflowX:"hidden",maxHeight:"200px",minHeight:"100px",padding:0,margin:0,listStyle:"none"},onclick:C&&G},q.length?Object(z.h)(p,{allOptions:q,selected:v,onSelect:a}):t.length?D:d("There are no "+S))])])};h.initialState=o.initialState,h.actions=f;var g=h,s={peopleSelect:g.initialState,carMakerSelect:g.initialState},t={peopleSelect:g.actions,carMakerSelect:g.actions},u=function(){return Object(z.h)("div",null,Object(z.h)("h1",null,Object(z.h)("br",null),"Multi Select"),Object(z.h)("p",null,Object(z.h)("em",null,"in ",Object(z.h)("a",{href:"https://hyperapp.js.org/"},"Hyperapp"))),Object(z.h)("hr",null))},m=Object(z.app)(s,t,function(a,b){var c=a.peopleSelect,d=a.carMakerSelect,e=b.peopleSelect,f=b.carMakerSelect;return Object(z.h)("div",{class:"counter",style:{height:"1000px"}},Object(z.h)(u,null),Object(z.h)("br",null),Object(z.h)(g,{state:c,actions:e,objectName:"people",isFilterable:!0,canSelectAll:!0}),Object(z.h)("br",null)," ",Object(z.h)("br",null)," ",Object(z.h)("br",null),Object(z.h)(g,{state:d,actions:f,objectName:"car makers",isFilterable:!0,canSelectAll:!0,dropdownIcon:Object(z.h)("i",{class:"material-icons",style:{marginTop:"-2px"}},"keyboard_arrow_down"),filterIcon:Object(z.h)("i",{class:"material-icons",style:{position:"absolute",right:"7px",fontSize:"18px",top:"9px"}},"search")}))},document.body);window.myApp=m,m.peopleSelect.updateOptions(["Donald Vandervort","Lahoma Propst","Lacy Laswell","Katerine Buckmaster","Herma Olaughlin","Apryl Sigala","Hattie Dill","Magnolia Brar","Kristi Bussell","Roxana Balbuena","Walton Alan","Mamie Locklear","Veda Pujol","Vernita Deangelo","Fredia Biller","Jacqui Bettencourt","Paul Dively","Rosaura Heath","Alva Genao","Lory Casares","Andreas Vanmatre","Mitsue Castaneda","Yukiko Robbins","Jonathon Herford","Edyth Vital","Karyn Leake","Gita Lomanto","Frida Purnell","Elwood Vaillancourt","Yessenia Sambrano"]),m.carMakerSelect.updateOptions(["Abarth","Aston Martin","Audi","Arrinera","Acura","Aixam","AC","Bentley","BMW","Buick","Bugatti","Chevrolet","Cadillac","Chrysler","Caterham","Corvette","Citro\xEBn","Dacia","Daihatsu","Dodge","Daewoo","Elfin","Fiat","Ferrari","Ford","GMC","Gaz","Gillet","Ginetta","Geely","Great Wall","Gumpert","Honda","Hennessey","Hyundai","Hummer","Holden","Isuzu","Infiniti","Jeep","Jaguar","Joss","Koenigsegg","Lamborghini","Land Rover","Lancia","Lincoln","Lexus","Luxgen","Lotus","Lada","Maruti Suzuki","Maserati","Mahindra","Mazda","Maybach","McLaren","Mercedes Benz","Mini","Morgan Motor","Mitsubishi","Mustang","Mosler","Nissan","Noble","Opel","Peugeot","Pagani","Piaggio","Panoz","Porsche","Perodua","Pininfarina","Proton","Renault","Rolls Royce","Rover","Rimac Automobili","Ruf Automobile","REVA","Scania","Seat","Saab","Scion","Skoda","Spyker","Smart","Shelby Mustang","Subaru","SsangYong","Suzuki","Shelby SuperCars","Tesla","Tata","Toyota","Tatra","Think","Troller","TVR","Tramontana","UAZ","Volkswagen","Vandenbrink","Volvo","Vauxhall","Vector Motors","Venturi","Viper","Wiesmann","ZAZ","Zagato","ZiL"])},function(){}]);
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("hyperapp"));
+	else if(typeof define === 'function' && define.amd)
+		define(["hyperapp"], factory);
+	else if(typeof exports === 'object')
+		exports["main"] = factory(require("hyperapp"));
+	else
+		root["main"] = factory(root["hyperapp"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+// EXTERNAL MODULE: external "hyperapp"
+var external__hyperapp_ = __webpack_require__(0);
+var external__hyperapp__default = /*#__PURE__*/__webpack_require__.n(external__hyperapp_);
+
+// CONCATENATED MODULE: ./src/components/MarkTerms.js
+
+
+// original implementation.
+var MarkTerms_MarkTerms = function MarkTerms(_ref) {
+  var _ref$words = _ref.words,
+      words = _ref$words === undefined ? "" : _ref$words,
+      _ref$terms = _ref.terms,
+      terms = _ref$terms === undefined ? "" : _ref$terms,
+      _ref$labelClass = _ref.labelClass,
+      labelClass = _ref$labelClass === undefined ? "" : _ref$labelClass;
+
+  if (!words) return words;
+  if (terms) {
+    var splitTerms = terms.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&").split(/\s+/);
+    var result = [];
+    var lastIndex = 0;
+
+    // ['this', 'that'] => /this|that/
+    var regex = new RegExp("(" + splitTerms.join("|") + ")", "ig");
+
+    words.replace(regex, function (match, group, index) {
+      if (index > lastIndex) {
+        result.push(words.slice(lastIndex, index));
+      }
+
+      result.push(Object(external__hyperapp_["h"])("mark", { class: labelClass }, match));
+      lastIndex = index + match.length;
+    });
+
+    if (lastIndex < words.length) {
+      result.push(words.slice(lastIndex));
+    }
+    return Object(external__hyperapp_["h"])("div", { style: { whiteSpace: "pre" } }, result);
+  } else {
+    return [words];
+  }
+
+  // end
+  var splitedWords = words.split(" ");
+  if (!words) return words;
+  if (terms) {
+    var _splitTerms = terms.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&").split(/\s+/);
+    var _result = [];
+    var _lastIndex = 0;
+
+    var _regex = new RegExp("(" + _splitTerms.join("|") + ")", "ig");
+
+    words.replace(_regex, function (match, group, index) {
+      if (index > _lastIndex) {
+        _result.push(words.slice(_lastIndex, index));
+      }
+
+      _result.push(Object(external__hyperapp_["h"])("mark", { class: labelClass }, match));
+      _lastIndex = index + match.length;
+    });
+
+    if (_lastIndex < words.length) {
+      _result.push(words.slice(_lastIndex));
+    }
+    return _result;
+  } else {
+    return [words];
+  }
+};
+
+/* harmony default export */ var components_MarkTerms = (MarkTerms_MarkTerms);
+// CONCATENATED MODULE: ./src/components/multi_select/multi_select_helper.js
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
+
+
+// state
+var initialState = {
+  selected: [],
+  allOptions: [],
+  cachedOptions: [],
+  isOpen: false,
+  filterText: ""
+};
+
+// actions
+var actions = {
+  updateOptions: function updateOptions(allOptions) {
+    return function (oldState) {
+      return Object.assign({}, oldState, {
+        allOptions: allOptions,
+        cachedOptions: allOptions,
+        selected: []
+      });
+    };
+  },
+  onSelect: function onSelect(option) {
+    return function (oldState) {
+      if (oldState.selected.includes(option)) {
+        var newSelected = oldState.selected.filter(function (opt) {
+          return opt !== option;
+        });
+        return Object.assign({}, oldState, {
+          selected: newSelected
+        });
+      }
+      return Object.assign({}, oldState, {
+        selected: [option].concat(_toConsumableArray(oldState.selected))
+      });
+    };
+  },
+  onSelectAll: function onSelectAll() {
+    return function (oldState) {
+      var selected = oldState.selected,
+          cachedOptions = oldState.cachedOptions;
+
+      var everythingSelected = cachedOptions.length === selected.length;
+      return Object.assign({}, oldState, {
+        selected: everythingSelected ? [] : cachedOptions
+      });
+    };
+  },
+  onOpen: function onOpen(_event) {
+    return function (oldState) {
+      return Object.assign({}, oldState, { isOpen: true });
+    };
+  },
+  onClose: function onClose(_event) {
+    return function (oldState) {
+      return Object.assign({}, oldState, { isOpen: false });
+    };
+  },
+  onUpdateFilterText: function onUpdateFilterText(text) {
+    return function (oldState) {
+      var textLowered = text.toLowerCase();
+      var cachedOptions = oldState.cachedOptions;
+
+      return Object.assign({}, oldState, {
+        allOptions: cachedOptions.filter(function (option) {
+          return textLowered === "" || option.toLowerCase().includes(textLowered);
+        }),
+        filterText: textLowered
+      });
+    };
+  }
+};
+
+var multi_select_helper_ZeroStateTemplate = function ZeroStateTemplate(text) {
+  return Object(external__hyperapp_["h"])("div", {
+    style: {
+      position: "absolute",
+      height: "100%",
+      width: "100%"
+    }
+  }, Object(external__hyperapp_["h"])("div", {
+    style: {
+      height: "100%",
+      alignItems: "center",
+      justifyContent: "center",
+      display: "flex"
+    }
+  }, text));
+};
+var ZERO_STATE_FILTERED_MESSAGE = multi_select_helper_ZeroStateTemplate("No results found");
+
+var multi_select_helper_OptionRow = function OptionRow(_ref) {
+  var checked = _ref.checked,
+      onclick = _ref.onclick,
+      option = _ref.option,
+      filterText = _ref.filterText;
+  return Object(external__hyperapp_["h"])("li", {
+    class: "MultiSelect-option",
+    style: {
+      listStyle: "none"
+    }
+  }, [Object(external__hyperapp_["h"])("label", {
+    style: {
+      display: "flex",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
+      overflowX: "hidden",
+      alignItems: "center"
+    }
+  }, [Object(external__hyperapp_["h"])("input", { type: "checkbox", checked: checked, onclick: onclick }),
+  // label mark terms
+  Object(external__hyperapp_["h"])(components_MarkTerms, { words: option, terms: filterText })])]);
+};
+
+var multi_select_helper_AllOptionRows = function AllOptionRows(_ref2) {
+  var allOptions = _ref2.allOptions,
+      selected = _ref2.selected,
+      onSelect = _ref2.onSelect,
+      filterText = _ref2.filterText;
+
+  return [Object(external__hyperapp_["h"])("div", { style: { height: "5px" } })].concat(_toConsumableArray(allOptions.map(function (option) {
+    return Object(external__hyperapp_["h"])(multi_select_helper_OptionRow, {
+      option: option,
+      checked: selected.includes(option),
+      onclick: function onclick(e) {
+        e.preventDefault();
+        onSelect(option);
+      },
+      filterText: filterText
+    });
+  })));
+};
+
+var handleFocusFilterInput = function handleFocusFilterInput(event) {
+  setTimeout(function () {
+    var topLevelComponent = event.target;
+    // find its parent
+    while (!topLevelComponent.classList.contains("MultiSelect")) {
+      topLevelComponent = topLevelComponent.parentElement;
+    }
+    topLevelComponent.querySelector(".MultiSelect-filterInput").focus();
+  });
+};
+
+var SOME_CHECKED_MARK = Object(external__hyperapp_["h"])("div", {
+  style: {
+    position: "absolute",
+    height: "100%",
+    alignItems: "center",
+    top: 0,
+    display: "flex",
+    left: "3px"
+  }
+}, Object(external__hyperapp_["h"])("div", {
+  style: {
+    height: "4px",
+    backgroundColor: "#19B5FE",
+    width: "10px",
+    borderRadius: "3px"
+  }
+}));
+
+var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) {
+  var isFilterable = _ref3.isFilterable,
+      isOpen = _ref3.isOpen,
+      onUpdateFilterText = _ref3.onUpdateFilterText,
+      filterIcon = _ref3.filterIcon,
+      cachedOptions = _ref3.cachedOptions,
+      selected = _ref3.selected,
+      canSelectAll = _ref3.canSelectAll,
+      onSelectAll = _ref3.onSelectAll;
+
+  var isEverythingSelected = selected.length === cachedOptions.length;
+  return Object(external__hyperapp_["h"])("div", {
+    class: "MultiSelect-filterCheckallControl",
+    style: {
+      padding: "2px 0",
+      background: "#eefaff",
+      borderBottom: "1px dashed #19B5FE"
+    }
+  }, [isFilterable && Object(external__hyperapp_["h"])("div", {
+    style: {
+      display: "flex",
+      background: "#eefaff",
+      padding: "4px 6px",
+      fontWeight: "800"
+    }
+  }, [isOpen && Object(external__hyperapp_["h"])("span", {
+    oncreate: function oncreate(element) {
+      // hacks into lifecycle hook
+      element.nextElementSibling.focus();
+    }
+  }), Object(external__hyperapp_["h"])("input", {
+    onkeyup: function onkeyup(event) {
+      return onUpdateFilterText(event.target.value);
+    },
+    class: "MultiSelect-filterInput",
+    placeholder: "Search...",
+    style: {
+      outlineWidth: "0px", // removes halo
+      width: "100%",
+      fontSize: "16px",
+      border: "2px solid #19B5FE",
+      boxSizing: "border-box" // otherwise overextends
+    }
+  }), filterIcon]), canSelectAll && Object(external__hyperapp_["h"])("div", {
+    style: {
+      position: "relative",
+      background: "#eefaff"
+    }
+  }, [Object(external__hyperapp_["h"])(multi_select_helper_OptionRow, {
+    option: "Select all",
+    checked: isEverythingSelected,
+    onclick: function onclick(e) {
+      e.preventDefault();
+      onSelectAll();
+    }
+  }), !!selected.length && !isEverythingSelected && SOME_CHECKED_MARK])]);
+};
+
+/* harmony default export */ var multi_select_helper = ({
+  ZERO_STATE_FILTERED_MESSAGE: ZERO_STATE_FILTERED_MESSAGE,
+  ZeroStateTemplate: multi_select_helper_ZeroStateTemplate,
+  AllOptionRows: multi_select_helper_AllOptionRows,
+  initialState: initialState,
+  actions: actions,
+  handleFocusFilterInput: handleFocusFilterInput,
+  MultiSelectControl: multi_select_helper_MultiSelectControl
+});
+// CONCATENATED MODULE: ./src/components/multi_select.js
+
+
+var multi_select_ZERO_STATE_FILTERED_MESSAGE = multi_select_helper.ZERO_STATE_FILTERED_MESSAGE,
+    multi_select_ZeroStateTemplate = multi_select_helper.ZeroStateTemplate,
+    multi_select_AllOptionRows = multi_select_helper.AllOptionRows,
+    multi_select_actions = multi_select_helper.actions,
+    multi_select_initialState = multi_select_helper.initialState,
+    multi_select_handleFocusFilterInput = multi_select_helper.handleFocusFilterInput,
+    multi_select_MultiSelectControl = multi_select_helper.MultiSelectControl;
+
+
+var multi_select_MultiSelect = function MultiSelect(_ref) {
+  var _ref$state = _ref.state,
+      isOpen = _ref$state.isOpen,
+      allOptions = _ref$state.allOptions,
+      cachedOptions = _ref$state.cachedOptions,
+      selected = _ref$state.selected,
+      filterText = _ref$state.filterText,
+      _ref$actions = _ref.actions,
+      onSelect = _ref$actions.onSelect,
+      onSelectAll = _ref$actions.onSelectAll,
+      onOpen = _ref$actions.onOpen,
+      onClose = _ref$actions.onClose,
+      onUpdateFilterText = _ref$actions.onUpdateFilterText,
+      dropdownIcon = _ref.dropdownIcon,
+      filterIcon = _ref.filterIcon,
+      _dropdownCheckbox = _ref._dropdownCheckbox,
+      _ref$style = _ref.style,
+      topLevelStyle = _ref$style === undefined ? {} : _ref$style,
+      _ref$class = _ref.class,
+      topLevelClass = _ref$class === undefined ? "" : _ref$class,
+      _ref$inputClass = _ref.inputClass,
+      inputClass = _ref$inputClass === undefined ? "" : _ref$inputClass,
+      _ref$listStyle = _ref.listStyle,
+      listStyle = _ref$listStyle === undefined ? {} : _ref$listStyle,
+      _ref$objectName = _ref.objectName,
+      objectName = _ref$objectName === undefined ? "Items" : _ref$objectName,
+      _ref$isFilterable = _ref.isFilterable,
+      isFilterable = _ref$isFilterable === undefined ? false : _ref$isFilterable,
+      _ref$canSelectAll = _ref.canSelectAll,
+      canSelectAll = _ref$canSelectAll === undefined ? false : _ref$canSelectAll;
+
+  var isShowingControl = isFilterable || canSelectAll;
+  var topLevelClassMashed = "MultiSelect " + (isOpen ? "is-open" : "") + " " + topLevelClass;
+
+  return Object(external__hyperapp_["h"])("div", {
+    class: topLevelClassMashed,
+    style: Object.assign({
+      border: "1px solid black",
+      position: "relative",
+      paddingBottom: "2px"
+    }, topLevelStyle, isOpen ? { borderBottomStyle: "dashed" } : { borderBottomStyle: "solid" })
+  }, [Object(external__hyperapp_["h"])("div", {
+    class: "MultiSelect-input " + inputClass,
+    style: {
+      display: "flex",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis"
+    },
+    onclick: isOpen ? onClose : onOpen
+  }, [Object(external__hyperapp_["h"])("span", { style: { marginRight: "auto" } }, [selected.length ? "Selected " + selected.length + " " + objectName : "Pick " + objectName + "..."]), Object(external__hyperapp_["h"])("span", {
+    class: "MultiSelect-arrowIcon",
+    style: {
+      position: "absolute",
+      right: 0
+    }
+  }, [dropdownIcon || Object(external__hyperapp_["h"])("span", {
+    oncreate: function oncreate(elem) {
+      return elem.innerHTML = "&forall;";
+    },
+    style: {
+      right: "5px",
+      position: "absolute",
+      transition: "transform .4s ease",
+      transform: isOpen ? "rotate(180deg)" : ""
+    }
+  })])]), isOpen && Object(external__hyperapp_["h"])("div", {
+    class: "MultiSelect-overlay",
+    style: {
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      position: "fixed",
+      zIndex: 1 // need to block all other multi selects from clickable.
+    },
+    onclick: onClose
+  }), isOpen && Object(external__hyperapp_["h"])("div", {
+    // TODO: rename this class, to MultiSelect-list-wrapper.
+    class: "MultiSelect-list-wrapper",
+    style: Object.assign({
+      marginTop: "0",
+      paddingLeft: 0,
+      position: "absolute",
+      width: "100%",
+      zIndex: 2,
+      background: "rgba(255, 255, 255, 1)",
+      border: "1px solid black",
+      borderTop: "0px"
+    }, listStyle)
+  }, [isShowingControl && Object(external__hyperapp_["h"])(multi_select_MultiSelectControl, {
+    isFilterable: isFilterable,
+    isOpen: isOpen,
+    onUpdateFilterText: onUpdateFilterText,
+    filterIcon: filterIcon,
+    cachedOptions: cachedOptions,
+    selected: selected,
+    canSelectAll: canSelectAll,
+    onSelectAll: onSelectAll
+  }), Object(external__hyperapp_["h"])("ul", {
+    class: "MultiSelect-list",
+    style: {
+      position: "relative",
+      overflowY: "scroll",
+      overflowX: "hidden",
+      maxHeight: "200px",
+      minHeight: "100px",
+      // reset list
+      padding: 0,
+      margin: 0,
+      listStyle: "none"
+    },
+    onclick: isFilterable && multi_select_handleFocusFilterInput
+  }, allOptions.length ? Object(external__hyperapp_["h"])(multi_select_AllOptionRows, {
+    allOptions: allOptions,
+    selected: selected,
+    onSelect: onSelect,
+    filterText: filterText
+  }) : cachedOptions.length ? multi_select_ZERO_STATE_FILTERED_MESSAGE : multi_select_ZeroStateTemplate("There are no " + objectName))])]);
+};
+
+multi_select_MultiSelect.initialState = multi_select_initialState;
+multi_select_MultiSelect.actions = multi_select_actions;
+/* harmony default export */ var multi_select = __webpack_exports__["default"] = (multi_select_MultiSelect);
+
+/***/ })
+/******/ ]);
+});
