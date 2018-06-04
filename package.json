@@ -20,7 +20,7 @@
   "dependencies": {
     "hyperapp": "^1.2.5"
   },
-  "keywords": ["hyperapp", "multi"],
+  "keywords": ["hyperapp", "multiselect", "select", "multi", "dropdown"],
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
