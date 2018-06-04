@@ -1,13 +1,16 @@
 {
   "name": "hyperapp-multiselect",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Minimal multiselect with search capabilities",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env production",
-    "docs": "webpack --env production --config webpack.config.doc.js",
-    "wipe": "rm -rf .git && git init && git add . && git commit -m 'initial commit'",
+    "done": "npm run docs && npm run dist && npm run build",
+    "docs": "webpack --env production --config webpack.config.docs.js",
+    "dist": "webpack --env production --config webpack.config.dist.js",
+    "wipe":
+      "rm -rf .git && git init && git add . && git commit -m 'initial commit'",
     "deploy": "npm run build && ./scripts/gh-pages.sh",
     "test": "jest --coverage --no-cache"
   },
@@ -17,10 +20,7 @@
   "dependencies": {
     "hyperapp": "^1.2.5"
   },
-  "keywords": [
-    "hyperapp",
-    "multi"
-  ],
+  "keywords": ["hyperapp", "multi"],
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
