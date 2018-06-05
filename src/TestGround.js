@@ -37,6 +37,29 @@ export default (state, actions) => {
         canSelectAll: true
       })}
 
+      <div
+        id="drop_zone"
+        ondrop={event => {
+          const { target: element } = event;
+          element.classList.remove("phasing");
+          event.preventDefault();
+          console.log(event);
+        }}
+        ondragover={event => {
+          const { target: element } = event;
+          element.classList.add("phasing");
+          event.preventDefault();
+          console.log(event);
+        }}
+        ondragleave={event => {
+          const { target: element } = event;
+          element.classList.remove("phasing");
+          console.log("ondragleave", event);
+        }}
+      >
+        <p>Drag one or more files to this Drop Zone ...</p>
+      </div>
+
       <button style={{ border: "1px solid black" }}>The End</button>
     </div>
   );

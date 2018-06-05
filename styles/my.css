@@ -117,3 +117,8 @@
 .transition-background-0_3 {
   transition: background 0.3s ease;
 }
+
+.phasing {
+  background: black;
+  color: white;
+}
