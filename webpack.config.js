@@ -20,11 +20,10 @@ module.exports = env => {
 
   return {
     entry: [
-      // "./src/index.js",
-      // "./src/demo.js", // for demo
-      "./src/components/multi_select" // for dist
+      "./src/index.js",
+      // "./src/components/multi_select" // for dist
 
-      // "./styles/app.css"
+      "./styles/app.css"
     ],
     output: {
       filename: "bundle.js",
@@ -48,7 +47,7 @@ module.exports = env => {
       ]
     },
     externals: {
-      hyperapp: true
+      hyperapp: env === "production"
     },
     plugins,
     devServer: {
