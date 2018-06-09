@@ -62,9 +62,11 @@ const FileDroparea = ({
   } = actions;
   return (
     <div
-      class={`FileDroparea ${className} ${isDraggingOver ? phasingClass : ""} ${
-        isDraggingOver ? "FileDroparea--isDraggingOver" : ""
-      }`}
+      class={`FileDroparea ${className}
+        ${isDraggingOver ? phasingClass : ""}
+        ${isDraggingOver ? "FileDroparea--isDraggingOver" : ""}
+        ${value ? "FileDroparea--hasFile" : ""}
+      `}
       oncreate={element => (state.mainElement = element)}
       ondrop={onDrop}
       ondragover={onDragOver}
