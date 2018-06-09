@@ -39,7 +39,7 @@ const actions = {
     const { files } = event.target;
     let filePath = "";
     if (files) {
-      [{ name: filePath }] = files;
+      [{ name: filePath } = {}] = files; // default {} in case remove file
     }
     return actions.onUpdateFile(filePath)(oldState);
   }
@@ -53,7 +53,13 @@ const FileDroparea = ({
   phasingClass
 }) => {
   const { value, isDraggingOver } = state;
-  const { onDrop, onDragOver, onDragLeave, onChangeFile } = actions;
+  const {
+    onUpdateFile,
+    onDrop,
+    onDragOver,
+    onDragLeave,
+    onChangeFile
+  } = actions;
   return (
     <div
       class={`FileDroparea ${className} ${isDraggingOver ? phasingClass : ""} ${
@@ -80,7 +86,10 @@ const FileDroparea = ({
         class="FileDroparea-fileupload"
         type="file"
         style={{ display: "none" }}
-        onclick={e => e.stopPropagation()}
+        onclick={e => {
+          e.stopPropagation();
+          onUpdateFile("");
+        }}
         onchange={onChangeFile}
       />
     </div>
