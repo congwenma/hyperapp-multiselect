@@ -81,7 +81,9 @@ const FileDroparea = ({
       )}
     >
       <button class="FileDroparea-description">CHOOSE FILES</button>
-      <span class="FileDroparea-filePath">{value}</span>
+      <span class="FileDroparea-filePath">
+        {value || "or drag the file here"}
+      </span>
       <input
         class="FileDroparea-fileupload"
         type="file"
