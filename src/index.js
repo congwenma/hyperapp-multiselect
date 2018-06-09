@@ -6,16 +6,20 @@ import {
   actions as carouselActions
 } from "./components/carousel";
 
+import FileDroparea from "./components/file_droparea";
+
 import multiSelect from "./components/multi_select";
 
 const state = {
   carousel: carouselState,
-  multiSelect: multiSelect.initialState
+  multiSelect: multiSelect.initialState,
+  myFile: FileDroparea.initialState
 };
 
 const actions = {
   carousel: carouselActions,
-  multiSelect: multiSelect.actions
+  multiSelect: multiSelect.actions,
+  myFile: FileDroparea.actions
 };
 
 const myApp = app(state, actions, view, document.body);

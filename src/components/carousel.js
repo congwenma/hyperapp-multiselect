@@ -1,3 +1,4 @@
+// failed experiment
 import { app, h } from "hyperapp";
 // state
 const expand = n => [...Array(n).keys()];

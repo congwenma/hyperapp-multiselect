@@ -2,6 +2,7 @@ import { h } from "hyperapp";
 import Description from "./Description";
 import Carousel from "./components/carousel";
 import MultiSelect from "./components/multi_select";
+import FileDroparea from "./components/file_droparea";
 
 /**
  * first object in the store is 'state' (an object - {})
@@ -12,22 +13,27 @@ import MultiSelect from "./components/multi_select";
 export default (state, actions) => {
   const {
     carousel: { current, elements, perWidth },
-    multiSelect: multiSelectState
+    multiSelect: multiSelectState,
+    myFile: myFileState
   } = state;
   const {
     carousel: { onNext, onPrev },
-    multiSelect: multiSelectActions
+    multiSelect: multiSelectActions,
+    myFile: myFileActions
   } = actions;
   return (
     <div class="counter" style={{ height: "1000px" }}>
       <Description />
       <h3>Carousel</h3>
-      <Carousel {...{ current, elements, perWidth, onNext, onPrev }} />
+      <div class="m2">
+        <Carousel {...{ current, elements, perWidth, onNext, onPrev }} />
+      </div>
+
       <h3>Multi Dropdown</h3>
       {MultiSelect({
         state: multiSelectState,
         actions: multiSelectActions,
-        class: "inputfield flex-auto u-pl0",
+        class: "inputfield flex-auto u-pl0 m2",
         objectName: "Sizes",
         inputClass: "pl0_5",
         // dropdownIcon: DropdownArrowIcon,
@@ -37,28 +43,13 @@ export default (state, actions) => {
         canSelectAll: true
       })}
 
-      <div
-        id="drop_zone"
-        ondrop={event => {
-          const { target: element } = event;
-          element.classList.remove("phasing");
-          event.preventDefault();
-          console.log(event);
-        }}
-        ondragover={event => {
-          const { target: element } = event;
-          element.classList.add("phasing");
-          event.preventDefault();
-          console.log(event);
-        }}
-        ondragleave={event => {
-          const { target: element } = event;
-          element.classList.remove("phasing");
-          console.log("ondragleave", event);
-        }}
-      >
-        <p>Drag one or more files to this Drop Zone ...</p>
-      </div>
+      <h3>File Droparea</h3>
+      <FileDroparea
+        state={myFileState}
+        actions={myFileActions}
+        class="p2 m2"
+        phasingClass="bkgd-blue"
+      />
 
       <button style={{ border: "1px solid black" }}>The End</button>
     </div>

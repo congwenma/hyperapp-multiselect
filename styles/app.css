@@ -43,13 +43,6 @@ section > * + * {
   margin-left: 2rem;
 }
 
-button {
-  padding: 0 1rem;
-  border: none;
-  font-size: 2rem;
-  height: 3rem;
-}
-
 h1 {
   font-size: calc(20px + 6vmin);
   margin-top: 0;
