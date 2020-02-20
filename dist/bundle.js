@@ -170,6 +170,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
+
 // state
 var initialState = {
   selected: [],
@@ -263,7 +264,8 @@ var multi_select_helper_OptionRow = function OptionRow(_ref) {
   var checked = _ref.checked,
       onclick = _ref.onclick,
       option = _ref.option,
-      filterText = _ref.filterText;
+      filterText = _ref.filterText,
+      optionDisplay = _ref.optionDisplay;
   return Object(external__hyperapp_["h"])("li", {
     class: "MultiSelect-option",
     style: {
@@ -279,17 +281,22 @@ var multi_select_helper_OptionRow = function OptionRow(_ref) {
     }
   }, [Object(external__hyperapp_["h"])("input", { type: "checkbox", checked: checked, onclick: onclick }),
   // label mark terms
-  Object(external__hyperapp_["h"])(components_MarkTerms, { words: option, terms: filterText })])]);
+  Object(external__hyperapp_["h"])(components_MarkTerms, {
+    words: optionDisplay ? optionDisplay(option) : option,
+    terms: filterText
+  })])]);
 };
 
 var multi_select_helper_AllOptionRows = function AllOptionRows(_ref2) {
   var allOptions = _ref2.allOptions,
       selected = _ref2.selected,
       onSelect = _ref2.onSelect,
-      filterText = _ref2.filterText;
+      filterText = _ref2.filterText,
+      optionDisplay = _ref2.optionDisplay;
 
   return [Object(external__hyperapp_["h"])("div", { style: { height: "5px" } })].concat(_toConsumableArray(allOptions.map(function (option) {
     return Object(external__hyperapp_["h"])(multi_select_helper_OptionRow, {
+      optionDisplay: optionDisplay,
       option: option,
       checked: selected.includes(option),
       onclick: function onclick(e) {
@@ -438,6 +445,7 @@ var multi_select_MultiSelect = function MultiSelect(_ref) {
       _ref$objectName = _ref.objectName,
       objectName = _ref$objectName === undefined ? "Items" : _ref$objectName,
       selectedDisplay = _ref.selectedDisplay,
+      optionDisplay = _ref.optionDisplay,
       _ref$isFilterable = _ref.isFilterable,
       isFilterable = _ref$isFilterable === undefined ? false : _ref$isFilterable,
       _ref$canSelectAll = _ref.canSelectAll,
@@ -534,7 +542,8 @@ var multi_select_MultiSelect = function MultiSelect(_ref) {
     allOptions: allOptions,
     selected: selected,
     onSelect: onSelect,
-    filterText: filterText
+    filterText: filterText,
+    optionDisplay: optionDisplay
   }) : cachedOptions.length ? multi_select_ZERO_STATE_FILTERED_MESSAGE : multi_select_ZeroStateTemplate('There are no ' + objectName))])]);
 };
 
