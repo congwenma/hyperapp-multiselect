@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-multiselect",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Minimal multiselect with search capabilities",
   "main": "dist/bundle.js",
   "scripts": {

@@ -83,8 +83,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
@@ -98,231 +97,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var external__hyperapp_ = __webpack_require__(0);
 var external__hyperapp__default = /*#__PURE__*/__webpack_require__.n(external__hyperapp_);
 
-// CONCATENATED MODULE: ./src/components/carousel.js
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-// failed experiment
-
-// state
-var expand = function expand(n) {
-  return [].concat(_toConsumableArray(Array(n).keys()));
-};
-
-var carousel_state = {
-  current: 0,
-  elements: expand(10).map(function (n) {
-    return Object(external__hyperapp_["h"])(
-      "div",
-      { "class": "inline-block" },
-      "Do something ",
-      n
-    );
-  }),
-  perWidth: 150
-};
-
-// actions
-var carousel_actions = {
-  onPrev: function onPrev(_event) {
-    return function (oldState) {
-      return Object.assign({}, oldState, {
-        current: Math.max(oldState.current - 1, 0)
-      });
-    };
-  },
-
-  onNext: function onNext(_event) {
-    return function (oldState) {
-      return Object.assign({}, oldState, {
-        current: Math.min(oldState.current + 1, oldState.elements.length - 1)
-      });
-    };
-  }
-};
-
-/**
- *
- * @param {perWidth} - width per item
- * @param {current} - current first item index
- */
-var carousel_HyperappCarouselView = function HyperappCarouselView(_ref) {
-  var perWidth = _ref.perWidth,
-      current = _ref.current,
-      elements = _ref.elements,
-      onPrev = _ref.onPrev,
-      onNext = _ref.onNext;
-
-  return Object(external__hyperapp_["h"])(
-    "div",
-    { "class": "HyperappCarousel" },
-    Object(external__hyperapp_["h"])(
-      "div",
-      {
-        id: "carousel",
-        style: {
-          whiteSpace: "nowrap",
-          width: perWidth * 3 + "px",
-          overflowX: "hidden"
-        }
-      },
-      Object(external__hyperapp_["h"])(
-        "div",
-        {
-          "class": "margin-left-transition",
-          style: {
-            marginLeft: -(perWidth * current) + "px"
-          }
-        },
-        elements
-      )
-    ),
-    Object(external__hyperapp_["h"])(
-      "div",
-      { "class": "HyperappCarousel-ctrl" },
-      Object(external__hyperapp_["h"])(
-        "button",
-        { "class": "HyperappCarousel-prev", onclick: onPrev },
-        "Previous"
-      ),
-      current,
-      Object(external__hyperapp_["h"])(
-        "button",
-        { "class": "HyperappCarousel-next", onclick: onNext },
-        "Next"
-      )
-    )
-  );
-};
-
-/* harmony default export */ var carousel = (carousel_HyperappCarouselView);
-// CONCATENATED MODULE: ./src/components/file_droparea.js
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-var initialState = {
-  value: "",
-  isDraggingOver: false,
-  mainElement: null
-};
-
-var file_droparea_actions = {
-  onUpdateFile: function onUpdateFile(newPath) {
-    return function (oldState) {
-      return Object.assign({}, oldState, { value: newPath });
-    };
-  },
-  onDrop: function onDrop(event) {
-    return function (oldState) {
-      event.preventDefault();
-      var files = event.dataTransfer.files;
-
-      var filePath = "";
-      if (files) {
-        var _files = _slicedToArray(files, 1);
-
-        filePath = _files[0].name;
-      }
-      return Object.assign({}, file_droparea_actions.onUpdateFile(filePath)(oldState), {
-        isDraggingOver: false
-      });
-    };
-  },
-  onDragOver: function onDragOver(event) {
-    return function (oldState) {
-      event.preventDefault();
-
-      return Object.assign({}, oldState, {
-        isDraggingOver: true
-      });
-    };
-  },
-  onDragLeave: function onDragLeave(event) {
-    return function (oldState) {
-      event.preventDefault();
-
-      return Object.assign({}, oldState, {
-        isDraggingOver: false
-      });
-    };
-  },
-  onChangeFile: function onChangeFile(event) {
-    return function (oldState) {
-      var files = event.target.files;
-
-      var filePath = "";
-      if (files) {
-        // default {} in case remove file
-        var _files2 = _slicedToArray(files, 1);
-
-        var _files2$ = _files2[0];
-        _files2$ = _files2$ === undefined ? {} : _files2$;
-        filePath = _files2$.name;
-      }
-      return file_droparea_actions.onUpdateFile(filePath)(oldState);
-    };
-  }
-};
-
-var file_droparea_FileDroparea = function FileDroparea(_ref) {
-  var state = _ref.state,
-      actions = _ref.actions,
-      style = _ref.style,
-      className = _ref.class,
-      phasingClass = _ref.phasingClass;
-  var value = state.value,
-      isDraggingOver = state.isDraggingOver;
-  var onUpdateFile = actions.onUpdateFile,
-      onDrop = actions.onDrop,
-      onDragOver = actions.onDragOver,
-      onDragLeave = actions.onDragLeave,
-      onChangeFile = actions.onChangeFile;
-
-  return Object(external__hyperapp_["h"])(
-    "div",
-    {
-      "class": "FileDroparea " + className + "\n        " + (isDraggingOver ? phasingClass : "") + "\n        " + (isDraggingOver ? "FileDroparea--isDraggingOver" : "") + "\n        " + (value ? "FileDroparea--hasFile" : "") + "\n      ",
-      oncreate: function oncreate(element) {
-        return state.mainElement = element;
-      },
-      ondrop: onDrop,
-      ondragover: onDragOver,
-      ondragleave: onDragLeave,
-      onclick: function onclick(event) {
-        state.mainElement.querySelector("input[type=file]").click();
-      },
-      style: Object.assign({
-        transition: "0.2s",
-        border: "1px dashed #7c7bd3"
-      }, style)
-    },
-    Object(external__hyperapp_["h"])(
-      "button",
-      { "class": "FileDroparea-description" },
-      "CHOOSE FILES"
-    ),
-    Object(external__hyperapp_["h"])(
-      "span",
-      { "class": "FileDroparea-filePath" },
-      value || "or drag the file here"
-    ),
-    Object(external__hyperapp_["h"])("input", {
-      "class": "FileDroparea-fileupload",
-      type: "file",
-      style: { display: "none" },
-      onclick: function onclick(e) {
-        e.stopPropagation();
-        onUpdateFile("");
-      },
-      onchange: onChangeFile
-    })
-  );
-};
-
-file_droparea_FileDroparea.initialState = initialState;
-file_droparea_FileDroparea.actions = file_droparea_actions;
-
-/* harmony default export */ var file_droparea = (file_droparea_FileDroparea);
 // CONCATENATED MODULE: ./src/components/MarkTerms.js
 
 
@@ -391,13 +165,13 @@ var MarkTerms_MarkTerms = function MarkTerms(_ref) {
 
 /* harmony default export */ var components_MarkTerms = (MarkTerms_MarkTerms);
 // CONCATENATED MODULE: ./src/components/multi_select/multi_select_helper.js
-function multi_select_helper__toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 
 
 
 // state
-var multi_select_helper_initialState = {
+var initialState = {
   selected: [],
   allOptions: [],
   cachedOptions: [],
@@ -406,7 +180,7 @@ var multi_select_helper_initialState = {
 };
 
 // actions
-var multi_select_helper_actions = {
+var actions = {
   updateOptions: function updateOptions(allOptions) {
     return function (oldState) {
       return Object.assign({}, oldState, {
@@ -427,7 +201,7 @@ var multi_select_helper_actions = {
         });
       }
       return Object.assign({}, oldState, {
-        selected: [option].concat(multi_select_helper__toConsumableArray(oldState.selected))
+        selected: [option].concat(_toConsumableArray(oldState.selected))
       });
     };
   },
@@ -514,7 +288,7 @@ var multi_select_helper_AllOptionRows = function AllOptionRows(_ref2) {
       onSelect = _ref2.onSelect,
       filterText = _ref2.filterText;
 
-  return [Object(external__hyperapp_["h"])("div", { style: { height: "5px" } })].concat(multi_select_helper__toConsumableArray(allOptions.map(function (option) {
+  return [Object(external__hyperapp_["h"])("div", { style: { height: "5px" } })].concat(_toConsumableArray(allOptions.map(function (option) {
     return Object(external__hyperapp_["h"])(multi_select_helper_OptionRow, {
       option: option,
       checked: selected.includes(option),
@@ -618,8 +392,8 @@ var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) 
   ZERO_STATE_FILTERED_MESSAGE: ZERO_STATE_FILTERED_MESSAGE,
   ZeroStateTemplate: multi_select_helper_ZeroStateTemplate,
   AllOptionRows: multi_select_helper_AllOptionRows,
-  initialState: multi_select_helper_initialState,
-  actions: multi_select_helper_actions,
+  initialState: initialState,
+  actions: actions,
   handleFocusFilterInput: handleFocusFilterInput,
   MultiSelectControl: multi_select_helper_MultiSelectControl
 });
@@ -766,157 +540,7 @@ var multi_select_MultiSelect = function MultiSelect(_ref) {
 
 multi_select_MultiSelect.initialState = multi_select_initialState;
 multi_select_MultiSelect.actions = multi_select_actions;
-/* harmony default export */ var multi_select = (multi_select_MultiSelect);
-// CONCATENATED MODULE: ./src/Description.js
-
-
-/* harmony default export */ var Description = (function () {
-  return Object(external__hyperapp_["h"])(
-    "div",
-    null,
-    Object(external__hyperapp_["h"])(
-      "h1",
-      null,
-      "hyperapp-one"
-    ),
-    Object(external__hyperapp_["h"])(
-      "p",
-      null,
-      Object(external__hyperapp_["h"])(
-        "em",
-        null,
-        "With JSX and Webpack"
-      )
-    ),
-    Object(external__hyperapp_["h"])("hr", null)
-  );
-});
-// CONCATENATED MODULE: ./src/TestGround.js
-
-
-
-
-
-
-
-Object(external__hyperapp_["h"])("does", null, ["nothing but ensure its imported"]);
-
-/**
- * first object in the store is 'state' (an object - {})
- * second object in the store is 'actions' (an object - {})
- * here we destructure what is needed
- * 'num' from 'state' and 'add'/'sub' from 'actions'
- */
-/* harmony default export */ var TestGround = (function (state, actions) {
-  var _state$carousel = state.carousel,
-      current = _state$carousel.current,
-      elements = _state$carousel.elements,
-      perWidth = _state$carousel.perWidth,
-      multiSelectState = state.multiSelect,
-      myFileState = state.myFile;
-  var _actions$carousel = actions.carousel,
-      onNext = _actions$carousel.onNext,
-      onPrev = _actions$carousel.onPrev,
-      multiSelectActions = actions.multiSelect,
-      myFileActions = actions.myFile;
-
-  return Object(external__hyperapp_["h"])(
-    'div',
-    { 'class': 'counter', style: { height: "1000px" } },
-    Object(external__hyperapp_["h"])(Description, null),
-    Object(external__hyperapp_["h"])(
-      'h3',
-      null,
-      'Carousel'
-    ),
-    Object(external__hyperapp_["h"])(
-      'div',
-      { 'class': 'm2' },
-      Object(external__hyperapp_["h"])(carousel, { current: current, elements: elements, perWidth: perWidth, onNext: onNext, onPrev: onPrev })
-    ),
-    Object(external__hyperapp_["h"])(
-      'h3',
-      null,
-      'Multi Dropdown'
-    ),
-    multi_select({
-      state: multiSelectState,
-      actions: multiSelectActions,
-      class: "inputfield flex-auto u-pl0 m2",
-      objectName: "Sizes",
-      inputClass: "pl0_5",
-      // dropdownIcon: DropdownArrowIcon,
-      listStyle: { marginTop: "4px" },
-      selectedDisplay: function selectedDisplay() {
-        return multiSelectState.selected.length + ' selected';
-      },
-      // filterIcon: FilterIcon,
-      isFilterable: true,
-      canSelectAll: true
-    }),
-    Object(external__hyperapp_["h"])(
-      'h3',
-      null,
-      'File Droparea'
-    ),
-    Object(external__hyperapp_["h"])(file_droparea, {
-      state: myFileState,
-      actions: myFileActions,
-      'class': 'p2 m2',
-      phasingClass: 'bkgd-blue'
-    }),
-    Object(external__hyperapp_["h"])(
-      'button',
-      { style: { border: "1px solid black" } },
-      'The End'
-    )
-  );
-});
-// CONCATENATED MODULE: ./src/index.js
-function src__toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-
-
-var src_expand = function expand(n) {
-  return [].concat(src__toConsumableArray(Array(n).keys()));
-};
-
-
-
-
-
-
-var src_state = {
-  carousel: carousel_state,
-  multiSelect: multi_select.initialState,
-  myFile: file_droparea.initialState
-};
-
-var src_actions = {
-  carousel: carousel_actions,
-  multiSelect: multi_select.actions,
-  myFile: file_droparea.actions
-};
-
-var myApp = Object(external__hyperapp_["app"])(src_state, src_actions, TestGround, document.body);
-window.myApp;
-myApp.multiSelect.updateOptions(src_expand(20));
-/**
- * Hyperapp wires your actions so the view is re-rendered every time the state
- * changes as a result of calling any action. This object is useful because it
- * allows you to talk to your app from another app, framework, vanilla JS, etc.
- *
- * Here is an example on CodePen: https://codepen.io/selfup/pen/jLMRjO
- */
-
-// setTimeout(add, 1000);
-// setTimeout(sub, 2000);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+/* harmony default export */ var multi_select = __webpack_exports__["default"] = (multi_select_MultiSelect);
 
 /***/ })
 /******/ ]);
