@@ -1,5 +1,6 @@
-import { h } from "hyperapp";
-import MarkTerms from "../MarkTerms";
+import { h } from 'hyperapp';
+
+import MarkTerms from '../MarkTerms';
 
 // state
 const initialState = {
@@ -81,7 +82,7 @@ const ZeroStateTemplate = text =>
   );
 const ZERO_STATE_FILTERED_MESSAGE = ZeroStateTemplate("No results found");
 
-const OptionRow = ({ checked, onclick, option, filterText }) =>
+const OptionRow = ({ checked, onclick, option, filterText, optionDisplay }) =>
   h(
     "li",
     {
@@ -105,18 +106,28 @@ const OptionRow = ({ checked, onclick, option, filterText }) =>
         [
           h("input", { type: "checkbox", checked: checked, onclick: onclick }),
           // label mark terms
-          h(MarkTerms, { words: option, terms: filterText })
+          h(MarkTerms, {
+            words: optionDisplay ? optionDisplay(option) : option,
+            terms: filterText
+          })
         ]
       )
     ]
   );
 
-const AllOptionRows = ({ allOptions, selected, onSelect, filterText }) => {
+const AllOptionRows = ({
+  allOptions,
+  selected,
+  onSelect,
+  filterText,
+  optionDisplay
+}) => {
   return [
     h("div", { style: { height: "5px" } }), // padding top of list
 
     ...allOptions.map(option => {
       return h(OptionRow, {
+        optionDisplay,
         option,
         checked: selected.includes(option),
         onclick: e => {

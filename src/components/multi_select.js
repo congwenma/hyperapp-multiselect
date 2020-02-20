@@ -31,6 +31,8 @@ const MultiSelect = ({
   objectName = "Items",
   selectedDisplay, // function
 
+  optionDisplay, // (option): string
+
   // booleans
   isFilterable = false,
   canSelectAll = false
@@ -171,7 +173,8 @@ const MultiSelect = ({
                     allOptions,
                     selected,
                     onSelect,
-                    filterText
+                    filterText,
+                    optionDisplay
                   })
                 : cachedOptions.length
                 ? ZERO_STATE_FILTERED_MESSAGE
