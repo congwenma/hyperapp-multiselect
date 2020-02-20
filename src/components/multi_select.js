@@ -1,5 +1,7 @@
-import { h } from "hyperapp";
-import multi_select_helper from "./multi_select/multi_select_helper";
+import { h } from 'hyperapp';
+
+import multi_select_helper from './multi_select/multi_select_helper';
+
 const {
   ZERO_STATE_FILTERED_MESSAGE,
   ZeroStateTemplate,
@@ -27,6 +29,7 @@ const MultiSelect = ({
 
   // strings
   objectName = "Items",
+  selectedDisplay, // function
 
   // booleans
   isFilterable = false,
@@ -36,6 +39,15 @@ const MultiSelect = ({
   const topLevelClassMashed = `MultiSelect ${
     isOpen ? "is-open" : ""
   } ${topLevelClass}`;
+
+  const inferredSelectedMessage = () =>
+    selected.length
+      ? `Selected ${selected.length} ${objectName}`
+      : `Pick ${objectName}...`;
+
+  const selectedMessage = selectedDisplay
+    ? selectedDisplay({ selected, filterText, isOpen })
+    : inferredSelectedMessage();
 
   return h(
     "div",
@@ -66,11 +78,7 @@ const MultiSelect = ({
           onclick: isOpen ? onClose : onOpen
         },
         [
-          h("span", { style: { marginRight: "auto" } }, [
-            selected.length
-              ? `Selected ${selected.length} ${objectName}`
-              : `Pick ${objectName}...`
-          ]),
+          h("span", { style: { marginRight: "auto" } }, [selectedMessage]),
           h(
             "span",
             {
@@ -166,8 +174,8 @@ const MultiSelect = ({
                     filterText
                   })
                 : cachedOptions.length
-                  ? ZERO_STATE_FILTERED_MESSAGE
-                  : ZeroStateTemplate(`There are no ${objectName}`)
+                ? ZERO_STATE_FILTERED_MESSAGE
+                : ZeroStateTemplate(`There are no ${objectName}`)
             )
           ]
         )

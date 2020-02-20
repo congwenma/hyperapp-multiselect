@@ -1064,6 +1064,9 @@
 .btn-blue {
   background: #19b5fe;
 }
+.bkgd-blue {
+  background: #19b5fe;
+}
 .btn-blue:hover {
   background: #3498db;
 }
@@ -1087,6 +1090,11 @@
 /** transitions */
 .transition-background-0_3 {
   transition: background 0.3s ease;
+}
+
+.phasing {
+  background: black;
+  color: white;
 }
 /* fallback */
 @font-face {
@@ -1131,13 +1139,6 @@ section {
 
 section > * + * {
   margin-left: 2rem;
-}
-
-button {
-  padding: 0 1rem;
-  border: none;
-  font-size: 2rem;
-  height: 3rem;
 }
 
 h1 {

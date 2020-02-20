@@ -1,8 +1,11 @@
-import { h } from "hyperapp";
-import Description from "./Description";
-import Carousel from "./components/carousel";
-import MultiSelect from "./components/multi_select";
-import FileDroparea from "./components/file_droparea";
+import { h } from 'hyperapp';
+
+import Carousel from './components/carousel';
+import FileDroparea from './components/file_droparea';
+import MultiSelect from './components/multi_select';
+import Description from './Description';
+
+h("does", null, ["nothing but ensure its imported"]);
 
 /**
  * first object in the store is 'state' (an object - {})
@@ -38,6 +41,7 @@ export default (state, actions) => {
         inputClass: "pl0_5",
         // dropdownIcon: DropdownArrowIcon,
         listStyle: { marginTop: "4px" },
+        selectedDisplay: () => `${multiSelectState.selected.length} selected`,
         // filterIcon: FilterIcon,
         isFilterable: true,
         canSelectAll: true
