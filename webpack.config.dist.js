@@ -1,3 +1,4 @@
+// NOTE: not used
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
@@ -14,23 +15,18 @@ const plugins = [
 
 module.exports = env => {
   if (env === "production") {
-    // plugins.push(new MinifyPlugin());
-    // plugins.push(new UglifyJsPlugin());
+    plugins.push(new UglifyJsPlugin());
+    plugins.push(new MinifyPlugin());
   }
 
   return {
     entry: [
       // "./src/index.js",
-      // "./src/demo.js", // for demo
-      "./src/components/multi_select" // for dist
-
-      // "./styles/app.css"
+      "./src/components/multi_select" // for dist      "./styles/app.css"
     ],
     output: {
       filename: "bundle.js",
-      path: path.resolve(__dirname, "./dist"),
-      library: "[name]",
-      libraryTarget: "umd"
+      path: path.resolve(__dirname, "./docs")
     },
     module: {
       rules: [
@@ -46,9 +42,6 @@ module.exports = env => {
           })
         }
       ]
-    },
-    externals: {
-      hyperapp: true
     },
     plugins,
     devServer: {
