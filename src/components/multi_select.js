@@ -148,7 +148,8 @@ const MultiSelect = ({
                 cachedOptions,
                 selected,
                 canSelectAll,
-                onSelectAll
+                onSelectAll,
+                optionDisplay
               }),
             h(
               "ul",

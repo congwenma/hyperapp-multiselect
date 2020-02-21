@@ -2,6 +2,8 @@ import { h } from 'hyperapp';
 
 import MarkTerms from '../MarkTerms';
 
+const identity = x => x;
+
 // state
 const initialState = {
   selected: [],
@@ -44,13 +46,16 @@ const actions = {
   onClose: _event => oldState => {
     return Object.assign({}, oldState, { isOpen: false });
   },
-  onUpdateFilterText: text => oldState => {
+  onUpdateFilterText: (text, optionDisplay = identity) => oldState => {
     const textLowered = text.toLowerCase();
     const { cachedOptions } = oldState;
     return Object.assign({}, oldState, {
       allOptions: cachedOptions.filter(
         option =>
-          textLowered === "" || option.toLowerCase().includes(textLowered)
+          textLowered === "" ||
+          optionDisplay(option)
+            .toLowerCase()
+            .includes(textLowered)
       ),
       filterText: textLowered
     });
@@ -181,7 +186,8 @@ const MultiSelectControl = ({
   cachedOptions,
   selected,
   canSelectAll,
-  onSelectAll
+  onSelectAll,
+  optionDisplay
 }) => {
   const isEverythingSelected = selected.length === cachedOptions.length;
   return h(
@@ -215,7 +221,8 @@ const MultiSelectControl = ({
                 }
               }),
             h("input", {
-              onkeyup: event => onUpdateFilterText(event.target.value),
+              onkeyup: event =>
+                onUpdateFilterText(event.target.value, optionDisplay),
               class: "MultiSelect-filterInput",
               placeholder: "Search...",
               style: {
