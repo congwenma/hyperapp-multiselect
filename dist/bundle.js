@@ -171,6 +171,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
+var identity = function identity(x) {
+  return x;
+};
+
 // state
 var initialState = {
   selected: [],
@@ -228,13 +232,14 @@ var actions = {
     };
   },
   onUpdateFilterText: function onUpdateFilterText(text) {
+    var optionDisplay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : identity;
     return function (oldState) {
       var textLowered = text.toLowerCase();
       var cachedOptions = oldState.cachedOptions;
 
       return Object.assign({}, oldState, {
         allOptions: cachedOptions.filter(function (option) {
-          return textLowered === "" || option.toLowerCase().includes(textLowered);
+          return textLowered === "" || optionDisplay(option).toLowerCase().includes(textLowered);
         }),
         filterText: textLowered
       });
@@ -345,7 +350,8 @@ var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) 
       cachedOptions = _ref3.cachedOptions,
       selected = _ref3.selected,
       canSelectAll = _ref3.canSelectAll,
-      onSelectAll = _ref3.onSelectAll;
+      onSelectAll = _ref3.onSelectAll,
+      optionDisplay = _ref3.optionDisplay;
 
   var isEverythingSelected = selected.length === cachedOptions.length;
   return Object(external__hyperapp_["h"])("div", {
@@ -369,7 +375,7 @@ var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) 
     }
   }), Object(external__hyperapp_["h"])("input", {
     onkeyup: function onkeyup(event) {
-      return onUpdateFilterText(event.target.value);
+      return onUpdateFilterText(event.target.value, optionDisplay);
     },
     class: "MultiSelect-filterInput",
     placeholder: "Search...",
@@ -523,7 +529,8 @@ var multi_select_MultiSelect = function MultiSelect(_ref) {
     cachedOptions: cachedOptions,
     selected: selected,
     canSelectAll: canSelectAll,
-    onSelectAll: onSelectAll
+    onSelectAll: onSelectAll,
+    optionDisplay: optionDisplay
   }), Object(external__hyperapp_["h"])("ul", {
     class: "MultiSelect-list",
     style: {
