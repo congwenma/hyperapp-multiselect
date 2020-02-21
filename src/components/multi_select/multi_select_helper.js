@@ -46,7 +46,7 @@ const actions = {
   onClose: _event => oldState => {
     return Object.assign({}, oldState, { isOpen: false });
   },
-  onUpdateFilterText: (text, optionDisplay = identity) => oldState => {
+  onUpdateFilterText: ({ text, optionDisplay = identity }) => oldState => {
     const textLowered = text.toLowerCase();
     const { cachedOptions } = oldState;
     return Object.assign({}, oldState, {
@@ -222,7 +222,10 @@ const MultiSelectControl = ({
               }),
             h("input", {
               onkeyup: event =>
-                onUpdateFilterText(event.target.value, optionDisplay),
+                onUpdateFilterText({
+                  text: event.target.value,
+                  optionDisplay
+                }),
               class: "MultiSelect-filterInput",
               placeholder: "Search...",
               style: {

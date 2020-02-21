@@ -231,8 +231,10 @@ var actions = {
       return Object.assign({}, oldState, { isOpen: false });
     };
   },
-  onUpdateFilterText: function onUpdateFilterText(text) {
-    var optionDisplay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : identity;
+  onUpdateFilterText: function onUpdateFilterText(_ref) {
+    var text = _ref.text,
+        _ref$optionDisplay = _ref.optionDisplay,
+        optionDisplay = _ref$optionDisplay === undefined ? identity : _ref$optionDisplay;
     return function (oldState) {
       var textLowered = text.toLowerCase();
       var cachedOptions = oldState.cachedOptions;
@@ -265,12 +267,12 @@ var multi_select_helper_ZeroStateTemplate = function ZeroStateTemplate(text) {
 };
 var ZERO_STATE_FILTERED_MESSAGE = multi_select_helper_ZeroStateTemplate("No results found");
 
-var multi_select_helper_OptionRow = function OptionRow(_ref) {
-  var checked = _ref.checked,
-      onclick = _ref.onclick,
-      option = _ref.option,
-      filterText = _ref.filterText,
-      optionDisplay = _ref.optionDisplay;
+var multi_select_helper_OptionRow = function OptionRow(_ref2) {
+  var checked = _ref2.checked,
+      onclick = _ref2.onclick,
+      option = _ref2.option,
+      filterText = _ref2.filterText,
+      optionDisplay = _ref2.optionDisplay;
   return Object(external__hyperapp_["h"])("li", {
     class: "MultiSelect-option",
     style: {
@@ -292,12 +294,12 @@ var multi_select_helper_OptionRow = function OptionRow(_ref) {
   })])]);
 };
 
-var multi_select_helper_AllOptionRows = function AllOptionRows(_ref2) {
-  var allOptions = _ref2.allOptions,
-      selected = _ref2.selected,
-      onSelect = _ref2.onSelect,
-      filterText = _ref2.filterText,
-      optionDisplay = _ref2.optionDisplay;
+var multi_select_helper_AllOptionRows = function AllOptionRows(_ref3) {
+  var allOptions = _ref3.allOptions,
+      selected = _ref3.selected,
+      onSelect = _ref3.onSelect,
+      filterText = _ref3.filterText,
+      optionDisplay = _ref3.optionDisplay;
 
   return [Object(external__hyperapp_["h"])("div", { style: { height: "5px" } })].concat(_toConsumableArray(allOptions.map(function (option) {
     return Object(external__hyperapp_["h"])(multi_select_helper_OptionRow, {
@@ -342,16 +344,16 @@ var SOME_CHECKED_MARK = Object(external__hyperapp_["h"])("div", {
   }
 }));
 
-var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) {
-  var isFilterable = _ref3.isFilterable,
-      isOpen = _ref3.isOpen,
-      onUpdateFilterText = _ref3.onUpdateFilterText,
-      filterIcon = _ref3.filterIcon,
-      cachedOptions = _ref3.cachedOptions,
-      selected = _ref3.selected,
-      canSelectAll = _ref3.canSelectAll,
-      onSelectAll = _ref3.onSelectAll,
-      optionDisplay = _ref3.optionDisplay;
+var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref4) {
+  var isFilterable = _ref4.isFilterable,
+      isOpen = _ref4.isOpen,
+      onUpdateFilterText = _ref4.onUpdateFilterText,
+      filterIcon = _ref4.filterIcon,
+      cachedOptions = _ref4.cachedOptions,
+      selected = _ref4.selected,
+      canSelectAll = _ref4.canSelectAll,
+      onSelectAll = _ref4.onSelectAll,
+      optionDisplay = _ref4.optionDisplay;
 
   var isEverythingSelected = selected.length === cachedOptions.length;
   return Object(external__hyperapp_["h"])("div", {
@@ -375,7 +377,10 @@ var multi_select_helper_MultiSelectControl = function MultiSelectControl(_ref3) 
     }
   }), Object(external__hyperapp_["h"])("input", {
     onkeyup: function onkeyup(event) {
-      return onUpdateFilterText(event.target.value, optionDisplay);
+      return onUpdateFilterText({
+        text: event.target.value,
+        optionDisplay: optionDisplay
+      });
     },
     class: "MultiSelect-filterInput",
     placeholder: "Search...",
